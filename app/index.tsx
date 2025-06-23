@@ -1,10 +1,13 @@
+import { Text, View } from "react-native";
 
-import FirestoreOfflineTest from "@/components/FirestoreOfflineTest";
+
 
 export default function Index() {
 
 
   return (
-    <FirestoreOfflineTest />
+    <View>
+      <Text>Hello</Text>
+    </View>
   );
 }
