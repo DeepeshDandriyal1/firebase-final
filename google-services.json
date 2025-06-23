@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "486193700518",
+    "project_id": "crud-2-d9df0",
+    "storage_bucket": "crud-2-d9df0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486193700518:android:48140413493b923929de67",
+        "android_client_info": {
+          "package_name": "com.deepesh.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486193700518-qea6d99bh5s1kv6fpgvipgg0v5t1ta26.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deepesh.myapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "486193700518-j2cbevbu04s5571mvha7vkstqggkvlvt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6v3OSiLFH-l57XK3kyFhlUp_69OhOf9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486193700518-j2cbevbu04s5571mvha7vkstqggkvlvt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
