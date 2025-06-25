@@ -1,9 +1,25 @@
 import firestore from '@react-native-firebase/firestore';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Button, StyleSheet, View } from 'react-native';
 export default function Profile() {
 
     const[loading,setLoading]=useState(false)
+
+    useEffect(() => {
+  const preload = async () => {
+    await firestore().collection('users').doc('12345').get();
+    console.log('Document preloaded');
+  };
+  preload();
+}, []);
+
+    useEffect(()=>{
+      firestore().enableNetwork()
+  .then(() => {
+    console.log('Firestore is now offline.');
+  });
+
+    },[])
 
       //add user
   const addUser = async () => {
@@ -26,21 +42,30 @@ export default function Profile() {
 };
 
 //retrieve data
-const fetchUser = async () => {
-  try{
-    setLoading(true)
-    const docRef = firestore().collection('users').doc('12345');
+const fetchUser = () => {
+  setLoading(true);
+  const docRef = firestore().collection('users').doc('12345');
 
- const doc = await docRef.get();
-if (doc.metadata.fromCache) {
-  console.log('Data is from local cache');
-} else {
-  console.log('Data is from server');
-}
-  setLoading(false)
-  }catch(err:any){
-    console.log(err.message)
-  }
+  const unsubscribe = docRef.onSnapshot(
+    { includeMetadataChanges: true },
+    (docSnapshot) => {
+      if (docSnapshot.exists()) {
+        const source = docSnapshot.metadata.fromCache ? 'local cache' : 'server';
+        console.log('Data came from:', source);
+        console.log('User data:', docSnapshot.data());
+      } else {
+        console.log('No such document!');
+      }
+      setLoading(false);
+    },
+    (error) => {
+      console.log('Error fetching document:', error);
+      setLoading(false);
+    }
+  );
+
+  // Optional: unsubscribe when no longer needed
+  return unsubscribe;
 };
   return (
     <View style={styles.container}>

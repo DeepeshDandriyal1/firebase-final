@@ -4,7 +4,7 @@ import { useRouter } from 'expo-router';
 import { useState } from "react";
 const router = useRouter();
 
-import { ActivityIndicator, Button, KeyboardAvoidingView, StyleSheet, TextInput, View } from "react-native";
+import { ActivityIndicator, Button, StyleSheet, TextInput, View } from "react-native";
 export default function Index() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,7 +43,7 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
-      <KeyboardAvoidingView behavior="padding">
+      <View >
         <TextInput
           placeholder="Email"
           value={email}
@@ -65,7 +65,7 @@ export default function Index() {
         <Button title="Sign In" onPress={signIn} disabled={loading} />
         </>)}
         
-      </KeyboardAvoidingView>
+      </View>
     </View>
   );
 }
