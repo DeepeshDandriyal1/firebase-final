@@ -1,10 +1,16 @@
 import auth from '@react-native-firebase/auth';
+
+import { useRouter } from 'expo-router';
 import { useState } from "react";
+const router = useRouter();
+
 import { ActivityIndicator, Button, KeyboardAvoidingView, StyleSheet, TextInput, View } from "react-native";
 export default function Index() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+
+
 
   const signUp = async() => {
     setLoading(true);
@@ -14,6 +20,7 @@ export default function Index() {
       setLoading(false)
       setEmail('')
       setPassword('')
+      router.push('/profile');
     }catch(err:any){
       console.log(err.message)
     }
